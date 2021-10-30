@@ -1,18 +1,14 @@
 'use strict';
+const Jimp = require('jimp');
 
-module.exports.hello = async (event) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
+module.exports.hello = async () => {
+  const myimage = await Jimp.read(
+    'https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg',
+  );
+  const bufferData = await myimage
+    .cover(250, 250)
+    .quality(60)
+    .getBufferAsync('image/' + 'png');
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+  return bufferData;
 };

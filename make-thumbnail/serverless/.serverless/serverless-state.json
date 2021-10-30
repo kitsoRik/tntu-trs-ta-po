@@ -174,32 +174,33 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/thumbnail/dev/1635573816879-2021-10-30T06:03:36.879Z/thumbnail.zip"
+                "S3Key": "serverless/thumbnail/dev/1635585705855-2021-10-30T09:21:45.855Z/thumbnail.zip"
               },
               "Handler": "handler.hello",
               "Runtime": "nodejs12.x",
               "FunctionName": "thumbnail-dev-hello",
-              "MemorySize": 1024,
-              "Timeout": 6,
+              "MemorySize": 2048,
+              "Timeout": 5,
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
                   "Arn"
                 ]
-              }
+              },
+              "ReservedConcurrentExecutions": 40
             },
             "DependsOn": [
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersiongvDGD2xo9nsdgMPswlKbC9g21fhR7qzQJPsQqkguQYE": {
+          "HelloLambdaVersionVuhHlpxBsYjNcVy4FGMFapXjJhS5a99clrrScnTw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "N2T+ufoquBzhkaDxKjrhdTQ+IHhfQcb5RZdGTSBQ8j0="
+              "CodeSha256": "AhNbTqLVL8s3DsyCsiCXGtQKzPJH8KhXwBQF0haXYII="
             }
           }
         },
@@ -215,7 +216,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersiongvDGD2xo9nsdgMPswlKbC9g21fhR7qzQJPsQqkguQYE"
+              "Ref": "HelloLambdaVersionVuhHlpxBsYjNcVy4FGMFapXjJhS5a99clrrScnTw"
             },
             "Export": {
               "Name": "sls-thumbnail-dev-HelloLambdaFunctionQualifiedArn"
@@ -307,18 +308,25 @@
       },
       "vpc": {}
     },
+    "custom": {
+      "webpack": {
+        "includeModules": true
+      }
+    },
     "pluginsData": {},
     "functions": {
       "hello": {
         "handler": "handler.hello",
+        "timeout": 5,
+        "memorySize": 2048,
+        "reservedConcurrency": 40,
         "events": [],
         "name": "thumbnail-dev-hello",
         "package": {},
-        "memory": 1024,
-        "timeout": 6,
+        "memory": 2048,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersiongvDGD2xo9nsdgMPswlKbC9g21fhR7qzQJPsQqkguQYE"
+        "versionLogicalId": "HelloLambdaVersionVuhHlpxBsYjNcVy4FGMFapXjJhS5a99clrrScnTw"
       }
     },
     "configValidationMode": "warn",
@@ -331,16 +339,19 @@
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
       },
+      "custom": {
+        "$ref": "$[\"service\"][\"custom\"]"
+      },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
       }
     },
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "/Users/admin/university/make-thumbnail/.serverless/thumbnail.zip"
+    "artifact": "/Users/admin/university/make-thumbnail/serverless/.serverless/thumbnail.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/thumbnail/dev/1635573816879-2021-10-30T06:03:36.879Z",
+    "artifactDirectoryName": "serverless/thumbnail/dev/1635585705855-2021-10-30T09:21:45.855Z",
     "artifact": "thumbnail.zip"
   }
 }
