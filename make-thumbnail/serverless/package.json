@@ -1,0 +1,17 @@
+{
+  "name": "rabbitmq",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "ts-node"
+  },
+  "dependencies": {
+    "jimp": "0.16.1"
+  },
+  "devDependencies": {
+    "webpack-node-externals": "^3.0.0"
+  }
+}
