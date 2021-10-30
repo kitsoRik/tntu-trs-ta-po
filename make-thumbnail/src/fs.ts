@@ -4,12 +4,20 @@ let i = 0;
 
 async function optimize() {
   const image = await jimp.read(
-    'https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg',
+    'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg',
   );
-  await image
-    .cover(250, 250)
-    .quality(60)
-    .getBufferAsync('image/' + 'png');
+
+  const promises: Promise<any>[] = [];
+  for (let i = 0; i < 100; i++) {
+    promises.push(
+      image
+        .cover(250, 250)
+        .quality(60)
+        .getBufferAsync('image/' + 'png'),
+    );
+  }
+
+  await Promise.all(promises);
 
   console.log(`Finished ${++i} optimization`);
 }

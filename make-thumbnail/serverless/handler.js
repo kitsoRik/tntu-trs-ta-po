@@ -1,14 +1,22 @@
 'use strict';
 const Jimp = require('jimp');
 
-module.exports.hello = async () => {
-  const myimage = await Jimp.read(
-    'https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg',
-  );
-  const bufferData = await myimage
+async function fn(image) {
+  await image
     .cover(250, 250)
     .quality(60)
     .getBufferAsync('image/' + 'png');
+}
 
-  return bufferData;
+module.exports.hello = async () => {
+  const promises = [];
+
+  const image = await Jimp.read(
+    'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg',
+  );
+
+  for (let i = 0; i < 100; i++) {
+    promises.push(fn(image));
+  }
+  await Promise.all(promises);
 };

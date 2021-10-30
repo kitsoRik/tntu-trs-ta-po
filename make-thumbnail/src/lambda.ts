@@ -1,7 +1,7 @@
 import { Lambda } from 'aws-sdk';
 
 const client = new Lambda({
-  region: 'us-east-1',
+  region: 'eu-central-1',
   credentials: {
     accessKeyId: process.env.AWS_ACCOUNT_KEY_ID!,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,

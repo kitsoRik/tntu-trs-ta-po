@@ -161,10 +161,10 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/thumbnail/dev/1635585705855-2021-10-30T09:21:45.855Z/thumbnail.zip"
+          "S3Key": "serverless/thumbnail/dev/1635597334059-2021-10-30T12:35:34.059Z/thumbnail.zip"
         },
         "Handler": "handler.hello",
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs14.x",
         "FunctionName": "thumbnail-dev-hello",
         "MemorySize": 2048,
         "Timeout": 5,
@@ -173,21 +173,20 @@
             "IamRoleLambdaExecution",
             "Arn"
           ]
-        },
-        "ReservedConcurrentExecutions": 40
+        }
       },
       "DependsOn": [
         "HelloLogGroup"
       ]
     },
-    "HelloLambdaVersionVuhHlpxBsYjNcVy4FGMFapXjJhS5a99clrrScnTw": {
+    "HelloLambdaVersionecKAKPVYEynnkjkzX6IsPIikUNzpz5yJex0AQT2Sbdk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "AhNbTqLVL8s3DsyCsiCXGtQKzPJH8KhXwBQF0haXYII="
+        "CodeSha256": "eP3TfcQPuINDczsWSoXg/9gDK+f4teZaPITsboy0mR4="
       }
     }
   },
@@ -203,7 +202,7 @@
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionVuhHlpxBsYjNcVy4FGMFapXjJhS5a99clrrScnTw"
+        "Ref": "HelloLambdaVersionecKAKPVYEynnkjkzX6IsPIikUNzpz5yJex0AQT2Sbdk"
       },
       "Export": {
         "Name": "sls-thumbnail-dev-HelloLambdaFunctionQualifiedArn"
